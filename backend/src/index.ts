@@ -16,6 +16,7 @@ app.use(
       "http://localhost:3000",
       "https://dream-destination-generator.web.app",
       "https://dream-destination-generator.firebaseapp.com",
+      "https://prod--dream-destination-generator.us-central1.hosted.app",
     ],
     allowMethods: ["GET", "POST", "OPTIONS"],
     allowHeaders: ["Content-Type"],
