@@ -44,7 +44,7 @@ export default function Home() {
       setLoadedTrip(null);
       generate(req);
     },
-    [generate]
+    [generate],
   );
 
   const handleLoadTrip = useCallback(
@@ -53,7 +53,7 @@ export default function Home() {
       reset();
       setIsPanelOpen(false);
     },
-    [reset]
+    [reset],
   );
 
   const handleBackToForm = useCallback(() => {
@@ -154,7 +154,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-card-border py-6">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center text-xs text-muted">
-          Dream Destination Generator &middot; Powered by Claude AI & FLUX
+          Dream Destination Generator &middot; Designed & Developed by{" "}
+          <a href="mailto:nick.romanenko@gmail.com">Nick</a>
         </div>
       </footer>
 
