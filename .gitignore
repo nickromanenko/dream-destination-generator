@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Service account keys
+service-account.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug
+npm-debug.log*
+pnpm-debug.log*
+
+# Turbo
+.turbo/
+
+# Vercel
+.vercel/
+
+# Testing
+coverage/
+
+# Docker
+.dockerignore
