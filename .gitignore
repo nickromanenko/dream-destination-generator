@@ -38,5 +38,3 @@ pnpm-debug.log*
 # Testing
 coverage/
 
-# Docker
-.dockerignore
