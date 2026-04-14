@@ -11,6 +11,10 @@ A web app where you describe your ideal travel vibe and AI generates a bespoke d
 - **Testing**: Vitest + React Testing Library
 - **Deployment**: Firebase App Hosting (frontend) + Cloud Run (backend)
 
+## Live Demo
+
+**[https://prod--dream-destination-generator.us-central1.hosted.app/](https://prod--dream-destination-generator.us-central1.hosted.app/)**
+
 ## Setup
 
 ### Prerequisites
@@ -66,11 +70,14 @@ Backend runs on `http://localhost:8080`, frontend on `http://localhost:3000`.
 ### 4. Run tests
 
 ```bash
-# Backend tests (39 tests)
+# Backend tests (40 tests)
 cd backend && pnpm test
 
-# Frontend tests (39 tests)
+# Frontend unit tests (39 tests)
 cd frontend && pnpm test
+
+# Frontend E2E tests — Playwright (44 tests, Chromium + Mobile Chrome)
+cd frontend && pnpm test:e2e
 ```
 
 ## Architecture
