@@ -6,4 +6,7 @@ runConfig:
   maxInstances: 2
 env:
   - variable: NEXT_PUBLIC_API_URL
-    value: ""
+    value: "https://dream-destination-api-3048075006.us-central1.run.app"
+    availability:
+      - BUILD
+      - RUNTIME
