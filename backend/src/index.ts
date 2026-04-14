@@ -29,4 +29,5 @@ app.route("/api", regenerateImage);
 export default {
   port: 8080,
   fetch: app.fetch,
+  idleTimeout: 120, // 2 minutes — SSE streams need time for AI generation
 };
