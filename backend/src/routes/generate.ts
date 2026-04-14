@@ -65,8 +65,11 @@ generate.post("/generate", (c) => {
           destination.imagePrompt,
           destination.colourPalette
         );
-      } catch {
-        // Image generation failed — continue without image
+      } catch (error) {
+        console.error("[generate] image generation failed, continuing without image", {
+          error: error instanceof Error ? error.message : String(error),
+          stack: error instanceof Error ? error.stack : undefined,
+        });
       }
 
       if (imageUrl) {
