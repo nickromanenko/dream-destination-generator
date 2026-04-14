@@ -7,7 +7,7 @@ A web app where you describe your ideal travel vibe and AI generates a bespoke d
 - **Frontend**: Next.js 16 (App Router) + TypeScript + Tailwind CSS v4
 - **Backend**: Hono + Bun (TypeScript API)
 - **AI**: Claude API (Haiku) for structured destination generation
-- **Image Generation**: fal.ai (FLUX/schnell) for travel poster creation
+- **Image Generation**: fal.ai (recraft-v3) for travel poster creation
 - **Testing**: Vitest + React Testing Library
 - **Deployment**: Firebase App Hosting (frontend) + Cloud Run (backend)
 
