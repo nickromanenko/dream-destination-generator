@@ -19,7 +19,7 @@ export function HeroImage({
   if (isLoading || !imageUrl) {
     return (
       <div
-        className="relative w-full aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden"
+        className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden"
         style={{
           background: `linear-gradient(135deg, ${palette.primary}, ${palette.secondary}, ${palette.accent})`,
         }}
@@ -39,7 +39,7 @@ export function HeroImage({
   }
 
   return (
-    <div className="relative w-full aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden group">
+    <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden group">
       <Image
         src={imageUrl}
         alt={`Travel poster for ${destinationName}`}
