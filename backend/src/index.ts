@@ -17,6 +17,7 @@ app.use(
       "https://dream-destination-generator.web.app",
       "https://dream-destination-generator.firebaseapp.com",
       "https://prod--dream-destination-generator.us-central1.hosted.app",
+      "https://dreamdestination.space",
     ],
     allowMethods: ["GET", "POST", "OPTIONS"],
     allowHeaders: ["Content-Type"],
