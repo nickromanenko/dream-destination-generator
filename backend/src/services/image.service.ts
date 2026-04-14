@@ -12,15 +12,35 @@ export async function generatePosterImage(
   prompt: string,
   palette: ColourPalette
 ): Promise<string> {
-  const enhancedPrompt = `${prompt}. Style: vintage travel poster, bold flat colours, clean illustration, retro typography. Dominant colours: ${palette.primary}, ${palette.secondary}, ${palette.accent}. High quality, detailed, print-ready.`;
+  const suffix = `. Vintage travel poster, bold flat colours, retro typography. Colours: ${palette.primary}, ${palette.secondary}, ${palette.accent}.`;
+  const maxPromptLength = 1000 - suffix.length;
+  const truncatedPrompt = prompt.length > maxPromptLength
+    ? prompt.slice(0, maxPromptLength - 3) + "..."
+    : prompt;
+  const enhancedPrompt = truncatedPrompt + suffix;
 
-  const result = await falClient.subscribe("fal-ai/flux/schnell", {
-    input: {
-      prompt: enhancedPrompt,
-      image_size: "portrait_4_3",
-      num_images: 1,
-    },
-  });
+  console.log("[image] calling recraft-v3", { promptLength: enhancedPrompt.length });
+
+  let result: Awaited<ReturnType<typeof falClient.subscribe>>;
+  try {
+    result = await falClient.subscribe("fal-ai/recraft-v3", {
+      input: {
+        prompt: enhancedPrompt,
+        image_size: "portrait_4_3",
+        style: "digital_illustration/2d_art_poster",
+      },
+    });
+  } catch (error) {
+    console.error("[image] fal.ai error details", {
+      name: error instanceof Error ? error.name : undefined,
+      message: error instanceof Error ? error.message : String(error),
+      body: JSON.stringify((error as any)?.body),
+      status: (error as any)?.status,
+    });
+    throw error;
+  }
+
+  console.log("[image] recraft-v3 response", { dataKeys: Object.keys((result.data as any) ?? {}) });
 
   const images = (result.data as any)?.images;
   if (!images || images.length === 0) {
