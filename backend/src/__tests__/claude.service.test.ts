@@ -121,6 +121,29 @@ describe("generateDestination", () => {
     );
   });
 
+  it("merges multiple tool_use blocks into a single response", async () => {
+    // Claude sometimes splits fields across multiple tool_use calls
+    const { destination, weather, itinerary, insiderTips, ...rest } = validToolInput;
+    const mockCreate = vi.fn().mockResolvedValue({
+      content: [
+        { type: "tool_use", id: "call_1", name: "generate_destination", input: { destination } },
+        { type: "tool_use", id: "call_2", name: "generate_destination", input: { weather } },
+        { type: "tool_use", id: "call_3", name: "generate_destination", input: { itinerary } },
+        { type: "tool_use", id: "call_4", name: "generate_destination", input: { insiderTips } },
+        { type: "tool_use", id: "call_5", name: "generate_destination", input: rest },
+      ],
+      stop_reason: "tool_use",
+    });
+    setClient(createMockClient(mockCreate));
+
+    const result = await generateDestination(validRequest);
+    expect(result.destination.name).toBe("Kyoto");
+    expect(result.weather.temperature).toBe("15-22°C");
+    expect(result.itinerary).toHaveLength(1);
+    expect(result.insiderTips.localPhrase).toBe("Konnichiwa");
+    expect(result.colourPalette.primary).toBe("#D4456A");
+  });
+
   it("falls back to text extraction when tool_use has invalid input", async () => {
     const mockCreate = vi.fn().mockResolvedValue({
       content: [
