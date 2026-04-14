@@ -36,7 +36,7 @@ export function DestinationCard({
   return (
     <div className="animate-fade-in-up" style={cssVars as React.CSSProperties}>
       {/* Action bar */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap items-center gap-3 mb-6">
         <RegenerateButtons
           onRegenerateText={onRegenerateText}
           onRegenerateImage={onRegenerateImage}
@@ -46,7 +46,7 @@ export function DestinationCard({
         <button
           onClick={onSave}
           disabled={isSaved}
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border text-sm font-medium transition-colors duration-200 cursor-pointer ${
+          className={`inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl border text-sm font-medium transition-colors duration-200 cursor-pointer w-full sm:w-auto ${
             isSaved
               ? "border-accent bg-accent/10 text-accent"
               : "border-card-border bg-card hover:bg-foreground/5"
